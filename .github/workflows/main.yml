@@ -2,12 +2,21 @@ name: Sample workflow for Firebase Distribution action
 on: [push, pull_request, workflow_dispatch]
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@master
       - name: Get sample .apk for test purposes
+        if: ${{ matrix.os != 'windows-latest' }}
         run: wget https://github.com/appium/appium/raw/1.10/sample-code/apps/ApiDemos-debug.apk
+        shell: bash
+      - name: Get sample .apk for test purposes (Windows)
+        if: ${{ matrix.os == 'windows-latest' }}
+        run:  Invoke-WebRequest -OutFile "ApiDemos-debug.apk" -Uri "https://github.com/appium/appium/blob/906350fd335f9485376214fdd17c7cdb6c9ff26b/sample-code/apps/ApiDemos-debug.apk?raw=true"
       - name: Upload artifact to Firebase Distribution
         id: testing_outputs
         uses: ./

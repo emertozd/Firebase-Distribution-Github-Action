@@ -1,6 +1,6 @@
-name: 'Firebase App Distribution'
+name: 'Firebase App Distribution (Linux, Windows, macOS)'
 description: 'GitHub Action that uploads artifacts to Firebase App Distribution'
-author: 'Wojciech Zięba <@wzieba>'
+author: 'Wojciech Zięba <@wzieba> & E.Mert Özdemir <@emertozd>'
 inputs:
   appId:
     description: 'App id can be found on the General Settings page'
@@ -28,7 +28,7 @@ inputs:
     required: false
   releaseNotesFile:
     description: 'Release notes visible on release page'
-    required: false    
+    required: false
   debug:
     description: 'Flag that can included to print verbose log output.'
     required: false
@@ -37,5 +37,26 @@ branding:
   color: 'orange'
   icon: 'send'
 runs:
-  using: 'docker'
-  image: docker://ghcr.io/wzieba/firebase-distribution-github-action:sha-344aa66
+  using: "composite"
+  steps:
+    - name: Install Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - run: npm install -g firebase-tools@13.10.1
+      shell: bash
+    - name: Publish to Firebase
+      run: $GITHUB_ACTION_PATH/entrypoint.sh
+      shell: bash
+      env:
+        INPUT_APPID: ${{ inputs.appId }}
+        INPUT_TOKEN: ${{ inputs.token }}
+        INPUT_SERVICECREDENTIALSFILE: ${{ inputs.serviceCredentialsFile }}
+        INPUT_SERVICECREDENTIALSFILECONTENT: ${{ inputs.serviceCredentialsFileContent }}
+        INPUT_FILE: ${{ inputs.file }}
+        INPUT_GROUPS: ${{ inputs.groups }}
+        INPUT_TESTERS: ${{ inputs.testers }}
+        INPUT_RELEASENOTES: ${{ inputs.releaseNotes }}
+        INPUT_RELEASENOTESFILE: ${{ inputs.releaseNotesFile }}
+        INPUT_DEBUG: ${{ inputs.debug }}
+

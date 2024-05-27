@@ -5,6 +5,10 @@
 
 This action uploads artifacts (.apk,.aab or .ipa) to Firebase App Distribution.
 
+This is a composite action. It supports Linux, Windows, and macOS.
+
+Forked from [wzieba/Firebase-Distribution-Github-Action](https://github.com/wzieba/Firebase-Distribution-Github-Action).
+
 ## Inputs
 
 ### `appId`
@@ -89,7 +93,7 @@ jobs:
     - name: build release 
       run: ./gradlew assembleRelease
     - name: upload artifact to Firebase App Distribution
-      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      uses: emertozd/Firebase-Distribution-Github-Action@v2
       with:
         appId: ${{secrets.FIREBASE_APP_ID}}
         serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
