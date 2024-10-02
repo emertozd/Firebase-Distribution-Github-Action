@@ -1,7 +1,7 @@
 # Firebase App Distribution Github Action
 
-<a href="https://github.com/wzieba/Firebase-Distribution-Github-Action/actions">![](https://github.com/wzieba/Firebase-Distribution-Github-Action/workflows/Sample%20workflow%20for%20Firebase%20Distribution%20action/badge.svg)</a>
-<a href="https://github.com/wzieba/Firebase-Distribution-Github-Action/releases">![](https://img.shields.io/github/v/release/wzieba/Firebase-Distribution-Github-Action)</a>
+<a href="https://github.com/emertozd/Firebase-Distribution-Github-Action/actions">![](https://github.com/emertozd/Firebase-Distribution-Github-Action/workflows/Sample%20workflow%20for%20Firebase%20Distribution%20action/badge.svg)</a>
+<a href="https://github.com/emertozd/Firebase-Distribution-Github-Action/releases">![](https://img.shields.io/github/v/release/emertozd/Firebase-Distribution-Github-Action)</a>
 
 This action uploads artifacts (.apk,.aab or .ipa) to Firebase App Distribution.
 

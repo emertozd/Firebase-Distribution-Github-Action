@@ -43,7 +43,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: 20
-    - run: npm install -g firebase-tools@13.10.1
+    - run: npm install -g firebase-tools@13.17.0
       shell: bash
     - name: Publish to Firebase
       run: $GITHUB_ACTION_PATH/entrypoint.sh
