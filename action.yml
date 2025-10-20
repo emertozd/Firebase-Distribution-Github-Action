@@ -46,6 +46,7 @@ runs:
     - run: npm install -g firebase-tools@13.17.0
       shell: bash
     - name: Publish to Firebase
+      id: publish
       run: $GITHUB_ACTION_PATH/entrypoint.sh
       shell: bash
       env:
@@ -59,4 +60,13 @@ runs:
         INPUT_RELEASENOTES: ${{ inputs.releaseNotes }}
         INPUT_RELEASENOTESFILE: ${{ inputs.releaseNotesFile }}
         INPUT_DEBUG: ${{ inputs.debug }}
-
+outputs:
+  firebase_console_url:
+    description: 'Firebase console release URL'
+    value: ${{ steps.publish.outputs.FIREBASE_CONSOLE_URI }}
+  testers_url:
+    description: 'Testers share URL'
+    value: ${{ steps.publish.outputs.TESTING_URI }}
+  binary_download_url:
+    description: 'Binary download URL'
+    value: ${{ steps.publish.outputs.BINARY_DOWNLOAD_URI }}
