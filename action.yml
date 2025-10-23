@@ -40,10 +40,10 @@ runs:
   using: "composite"
   steps:
     - name: Install Node.js 20.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: 20
-    - run: npm install -g firebase-tools@13.17.0
+        node-version: 24
+    - run: npm install -g firebase-tools@14.21.0
       shell: bash
     - name: Publish to Firebase
       id: publish
