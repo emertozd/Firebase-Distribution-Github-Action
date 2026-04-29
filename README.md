@@ -1,9 +1,13 @@
 # Firebase App Distribution Github Action
 
-<a href="https://github.com/wzieba/Firebase-Distribution-Github-Action/actions">![](https://github.com/wzieba/Firebase-Distribution-Github-Action/workflows/Sample%20workflow%20for%20Firebase%20Distribution%20action/badge.svg)</a>
-<a href="https://github.com/wzieba/Firebase-Distribution-Github-Action/releases">![](https://img.shields.io/github/v/release/wzieba/Firebase-Distribution-Github-Action)</a>
+<a href="https://github.com/emertozd/Firebase-Distribution-Github-Action/actions">![](https://github.com/emertozd/Firebase-Distribution-Github-Action/workflows/Sample%20workflow%20for%20Firebase%20Distribution%20action/badge.svg)</a>
+<a href="https://github.com/emertozd/Firebase-Distribution-Github-Action/releases">![](https://img.shields.io/github/v/release/emertozd/Firebase-Distribution-Github-Action)</a>
 
 This action uploads artifacts (.apk,.aab or .ipa) to Firebase App Distribution.
+
+This is a composite action. It supports Linux, Windows, and macOS.
+
+Forked from [wzieba/Firebase-Distribution-Github-Action](https://github.com/wzieba/Firebase-Distribution-Github-Action).
 
 ## Inputs
 
@@ -89,7 +93,7 @@ jobs:
     - name: build release 
       run: ./gradlew assembleRelease
     - name: upload artifact to Firebase App Distribution
-      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      uses: emertozd/Firebase-Distribution-Github-Action@v2
       with:
         appId: ${{secrets.FIREBASE_APP_ID}}
         serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
