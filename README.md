@@ -93,7 +93,7 @@ jobs:
     - name: build release 
       run: ./gradlew assembleRelease
     - name: upload artifact to Firebase App Distribution
-      uses: emertozd/Firebase-Distribution-Github-Action@v2
+      uses: emertozd/Firebase-Distribution-Github-Action@v5
       with:
         appId: ${{secrets.FIREBASE_APP_ID}}
         serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
